@@ -9,7 +9,7 @@ using namespace std;
 int WinW;
 int WinH;
 
-int R; // Основная окружность для отрисовки вершин графа
+int R; // РћСЃРЅРѕРІРЅР°СЏ РѕРєСЂСѓР¶РЅРѕСЃС‚СЊ РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё РІРµСЂС€РёРЅ РіСЂР°С„Р°
 
 struct Coordinate
 {
@@ -46,7 +46,7 @@ public:
 			int v_Pos1 = GetVertPos(v1);
 			int v_Pos2 = GetVertPos(v2);
 			if (this->Matrix[v_Pos1][v_Pos2] != 0 && this->Matrix[v_Pos2][v_Pos1] != 0) {
-				cout << "Одного из узлов в графе не существует" << endl;
+				cout << "РћРґРЅРѕРіРѕ РёР· СѓР·Р»РѕРІ РІ РіСЂР°С„Рµ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚" << endl;
 				return;
 			}
 			else {
@@ -55,7 +55,7 @@ public:
 			}
 		}
 		else {
-			cout << "Между данными вершинами уже есть ребро" << endl;
+			cout << "РњРµР¶РґСѓ РґР°РЅРЅС‹РјРё РІРµСЂС€РёРЅР°РјРё СѓР¶Рµ РµСЃС‚СЊ СЂРµР±СЂРѕ" << endl;
 			return;
 		}
 	}
@@ -65,7 +65,7 @@ public:
 			this->vertexList.push_back(v);
 		}
 		else {
-			cout << "Невозможно добавить вершину " << endl;
+			cout << "РќРµРІРѕР·РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РІРµСЂС€РёРЅСѓ " << endl;
 			return;
 		}
 	}
@@ -139,7 +139,7 @@ public:
 	{
 		int vertListSize = this->vertexList.size();
 		if (!this->IsEmpty()) {
-			cout << "Матрица смежности: " << endl;
+			cout << "РњР°С‚СЂРёС†Р° СЃРјРµР¶РЅРѕСЃС‚Рё: " << endl;
 			for (int i = 0; i < vertListSize; ++i) {
 				for (int j = 0; j < vertListSize; ++j) {
 					cout << " " << this->Matrix[i][j] << " ";
@@ -152,7 +152,7 @@ public:
 
 Graph<int> graph;
 
-void OpWay(int*** matrix, int n, int** h0, int* wayop) // Метод ветвей и границ
+void OpWay(int*** matrix, int n, int** h0, int* wayop) // РњРµС‚РѕРґ РІРµС‚РІРµР№ Рё РіСЂР°РЅРёС†
 {
 
 	for (int l = 0; l < n; l++)
@@ -160,10 +160,10 @@ void OpWay(int*** matrix, int n, int** h0, int* wayop) // Метод ветвей и границ
 		for (int i = 0; i < n; i++)
 		{
 			int min = 1000000;
-			for (int j = 0; j < n; j++) // Нахождение минимумов строк
+			for (int j = 0; j < n; j++) // РќР°С…РѕР¶РґРµРЅРёРµ РјРёРЅРёРјСѓРјРѕРІ СЃС‚СЂРѕРє
 				if (matrix[i][j] && min > *matrix[i][j])
 					min = *matrix[i][j];
-			for (int j = 0; j < n; j++) // Редукция строк
+			for (int j = 0; j < n; j++) // Р РµРґСѓРєС†РёСЏ СЃС‚СЂРѕРє
 				if (matrix[i][j])
 					*matrix[i][j] -= min;
 		}
@@ -171,18 +171,18 @@ void OpWay(int*** matrix, int n, int** h0, int* wayop) // Метод ветвей и границ
 		{
 			int min = 1000000;
 			for (int i = 0; i < n; i++)
-				if (matrix[i][j] && min > *matrix[i][j]) // Нахождение минимумов столбцов
+				if (matrix[i][j] && min > *matrix[i][j]) // РќР°С…РѕР¶РґРµРЅРёРµ РјРёРЅРёРјСѓРјРѕРІ СЃС‚РѕР»Р±С†РѕРІ
 					min = *matrix[i][j];
-			for (int i = 0; i < n; i++) // Редукция столбцов
+			for (int i = 0; i < n; i++) // Р РµРґСѓРєС†РёСЏ СЃС‚РѕР»Р±С†РѕРІ
 				if (matrix[i][j])
 					*matrix[i][j] -= min;
 		}
 
-		for (int i = 0; i < n; i++) // Матрица оценок нулей
+		for (int i = 0; i < n; i++) // РњР°С‚СЂРёС†Р° РѕС†РµРЅРѕРє РЅСѓР»РµР№
 			for (int j = 0; j < n; j++)
 				h0[i][j] = 0; 
 
-		for (int i = 0; i < n; i++) // Нахождение оценок для нулевых элементов
+		for (int i = 0; i < n; i++) // РќР°С…РѕР¶РґРµРЅРёРµ РѕС†РµРЅРѕРє РґР»СЏ РЅСѓР»РµРІС‹С… СЌР»РµРјРµРЅС‚РѕРІ
 			for (int j = 0; j < n; j++)
 			{
 				if (matrix[i][j] && !*matrix[i][j])
@@ -198,32 +198,32 @@ void OpWay(int*** matrix, int n, int** h0, int* wayop) // Метод ветвей и границ
 						if (l != j && matrix[i][l] && TMP2min > *matrix[i][l])
 							TMP2min = *matrix[i][l];
 
-					h0[i][j] = TMPmin + TMP2min; // Оценка
+					h0[i][j] = TMPmin + TMP2min; // РћС†РµРЅРєР°
 				}
 			}
 
 		int mcost = 0, mi = 0, mj = 0;
-		for (int i = 0; i < n; i++) // Выбор нулевого элемента с наибольшей оценкой
+		for (int i = 0; i < n; i++) // Р’С‹Р±РѕСЂ РЅСѓР»РµРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СЃ РЅР°РёР±РѕР»СЊС€РµР№ РѕС†РµРЅРєРѕР№
 			for (int j = 0; j < n; j++)
 				if (matrix[i][j] && mcost < h0[i][j])
 				{
 					mcost = h0[i][j]; 
-					mi = i; // Для редукции матрицы 
+					mi = i; // Р”Р»СЏ СЂРµРґСѓРєС†РёРё РјР°С‚СЂРёС†С‹ 
 					mj = j; //
 				}
 		wayop[mi] = mj;
 
-		for (int i = 0; i < n; i++) // Редукция матрицы по столбцам
+		for (int i = 0; i < n; i++) // Р РµРґСѓРєС†РёСЏ РјР°С‚СЂРёС†С‹ РїРѕ СЃС‚РѕР»Р±С†Р°Рј
 			matrix[i][mj] = nullptr;
 
-		for (int i = 0; i < n; i++) // Редукция матрицы по строкам
+		for (int i = 0; i < n; i++) // Р РµРґСѓРєС†РёСЏ РјР°С‚СЂРёС†С‹ РїРѕ СЃС‚СЂРѕРєР°Рј
 			matrix[mi][i] = nullptr;
 
-		matrix[mj][mi] = nullptr; // Ну и сам нулевой элемент убираем
+		matrix[mj][mi] = nullptr; // РќСѓ Рё СЃР°Рј РЅСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚ СѓР±РёСЂР°РµРј
 	}
 }
 
-void ZadachaKomi() // Путь 
+void ZadachaKomi() // РџСѓС‚СЊ 
 {
 	int n = amountVerts;
 	int** h0 = new int* [n];
@@ -233,7 +233,7 @@ void ZadachaKomi() // Путь
 	{
 		h0[i] = new int[n];
 	}
-	for (int i = 0; i < n; i++) // Копия матрицы смежности для последующих редукций
+	for (int i = 0; i < n; i++) // РљРѕРїРёСЏ РјР°С‚СЂРёС†С‹ СЃРјРµР¶РЅРѕСЃС‚Рё РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РёС… СЂРµРґСѓРєС†РёР№
 	{
 		matrix[i] = new int* [n];
 		for (int j = 0; j < n; j++)
@@ -248,14 +248,14 @@ void ZadachaKomi() // Путь
 	int s = 0;
 	int j;
 	OpWay(matrix, n, h0, wayop);
-	cout << "\nОптимальный путь: ";
+	cout << "\nРћРїС‚РёРјР°Р»СЊРЅС‹Р№ РїСѓС‚СЊ: ";
 	int tmp = 0;
 	for (int i = 0; i < n; i++)
 	{
 		j = wayop[i];
 		if (!graph.Matrix[i][j])
 		{
-			cout << "Произошла ошибка с вершиной\n";
+			cout << "РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° СЃ РІРµСЂС€РёРЅРѕР№\n";
 			break;
 		}
 		s += graph.Matrix[i][j];
@@ -274,19 +274,19 @@ void ZadachaKomi() // Путь
 			}
 		}
 	}
-	cout << "\nИтоговый путь: " << s;
+	cout << "\nРС‚РѕРіРѕРІС‹Р№ РїСѓС‚СЊ: " << s;
 	cout << endl;
 }
 
 
-Graph<int> makeGraph() // Создание графа как таблица смежности
+Graph<int> makeGraph() // РЎРѕР·РґР°РЅРёРµ РіСЂР°С„Р° РєР°Рє С‚Р°Р±Р»РёС†Р° СЃРјРµР¶РЅРѕСЃС‚Рё
 {
 	Graph<int> graph;
 	int amountEdges, sourceVertex, targetVertex, edgeWeight;
-	cout << "Введите количество вершин: ";
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІРµСЂС€РёРЅ: ";
 	cin >> amountVerts;
 	cout << endl;
-	cout << "Введите количество ребер: ";
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЂРµР±РµСЂ: ";
 	cin >> amountEdges;
 	cout << endl;
 	for (int i = 1; i <= amountVerts; ++i) {
@@ -295,15 +295,15 @@ Graph<int> makeGraph() // Создание графа как таблица смежности
 	}
 
 	for (int i = 0; i < amountEdges; ++i) {
-		cout << "Начальная вершина: ";
+		cout << "РќР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂС€РёРЅР°: ";
 		cin >> sourceVertex;
 		cout << endl;
 		int* sourceVertPtr = &sourceVertex;
-		cout << "Конечная вершина: ";
+		cout << "РљРѕРЅРµС‡РЅР°СЏ РІРµСЂС€РёРЅР°: ";
 		cin >> targetVertex;
 		cout << endl;
 		int* targetVertPtr = &targetVertex;
-		cout << "Вес ребра: "; cin >> edgeWeight; cout << endl;
+		cout << "Р’РµСЃ СЂРµР±СЂР°: "; cin >> edgeWeight; cout << endl;
 		graph.InsertEdge(*sourceVertPtr, *targetVertPtr, edgeWeight);
 	}
 	cout << endl;
@@ -311,11 +311,11 @@ Graph<int> makeGraph() // Создание графа как таблица смежности
 }
 
 
-void GraphCircle(int i, int n) // Для отрисовки вершин графа по окружности
+void GraphCircle(int i, int n) // Р”Р»СЏ РѕС‚СЂРёСЃРѕРІРєРё РІРµСЂС€РёРЅ РіСЂР°С„Р° РїРѕ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
 {
 	int Rtmp;
 
-	int x0 = WinW / 2; // Середина окна 
+	int x0 = WinW / 2; // РЎРµСЂРµРґРёРЅР° РѕРєРЅР° 
 	int y0 = WinH / 2; //
 	if (WinW > WinH)
 	{
@@ -330,11 +330,11 @@ void GraphCircle(int i, int n) // Для отрисовки вершин графа по окружности
 	float y1 = Rtmp * cos(fi) + y0;
 	float x1 = Rtmp * sin(fi) + x0;
 
-	vertCord[i].x = x1; // Запоминаем координаты для отрисовки цифр вершин графа
+	vertCord[i].x = x1; // Р—Р°РїРѕРјРёРЅР°РµРј РєРѕРѕСЂРґРёРЅР°С‚С‹ РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё С†РёС„СЂ РІРµСЂС€РёРЅ РіСЂР°С„Р°
 	vertCord[i].y = y1; //
 }
 
-void drawCircle(int x, int y, int R) // Для отрисовки окружностей вершин графа
+void drawCircle(int x, int y, int R) // Р”Р»СЏ РѕС‚СЂРёСЃРѕРІРєРё РѕРєСЂСѓР¶РЅРѕСЃС‚РµР№ РІРµСЂС€РёРЅ РіСЂР°С„Р°
 {
 	glColor3f(1.0, 0.1, 0.1);
 	float x1, y1;
@@ -361,7 +361,7 @@ void drawCircle(int x, int y, int R) // Для отрисовки окружностей вершин графа
 	glEnd();
 }
 
-void drawText(int num, int x1, int y1) // Отрисовка текста
+void drawText(int num, int x1, int y1) // РћС‚СЂРёСЃРѕРІРєР° С‚РµРєСЃС‚Р°
 {
 	GLvoid* font = GLUT_BITMAP_HELVETICA_18;
 	string s = to_string(num);
@@ -370,7 +370,7 @@ void drawText(int num, int x1, int y1) // Отрисовка текста
 		glutBitmapCharacter(font, s[j]);
 }
 
-void drawVertex(int n) // Отрисовка уже самих вершин графа, включает круг и текст внутри него
+void drawVertex(int n) // РћС‚СЂРёСЃРѕРІРєР° СѓР¶Рµ СЃР°РјРёС… РІРµСЂС€РёРЅ РіСЂР°С„Р°, РІРєР»СЋС‡Р°РµС‚ РєСЂСѓРі Рё С‚РµРєСЃС‚ РІРЅСѓС‚СЂРё РЅРµРіРѕ
 {
 	for (int i = 0; i < n; i++) {
 		drawCircle(vertCord[i].x, vertCord[i].y, R);
@@ -378,7 +378,7 @@ void drawVertex(int n) // Отрисовка уже самих вершин графа, включает круг и текс
 	}
 }
 
-void drawLine(int text, int x0, int y0, int x1, int y1) // Отрезок(Ребро) + его Вес
+void drawLine(int text, int x0, int y0, int x1, int y1) // РћС‚СЂРµР·РѕРє(Р РµР±СЂРѕ) + РµРіРѕ Р’РµСЃ
 {
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glBegin(GL_LINES);
@@ -390,14 +390,14 @@ void drawLine(int text, int x0, int y0, int x1, int y1) // Отрезок(Ребро) + его 
 
 
 template<class T>
-void Graph<T>::DrawGraph() // Полная отрисовка графа
+void Graph<T>::DrawGraph() // РџРѕР»РЅР°СЏ РѕС‚СЂРёСЃРѕРІРєР° РіСЂР°С„Р°
 {
 	int n = vertexList.size();
-	for (int i = 0; i < n; i++) // Как раз подготовка невидимой окружности для вершин
+	for (int i = 0; i < n; i++) // РљР°Рє СЂР°Р· РїРѕРґРіРѕС‚РѕРІРєР° РЅРµРІРёРґРёРјРѕР№ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё РґР»СЏ РІРµСЂС€РёРЅ
 	{
 		GraphCircle(i, n);
 	}
-	for (int i = 0; i < n; i++) // Отрисовка ребер графа
+	for (int i = 0; i < n; i++) // РћС‚СЂРёСЃРѕРІРєР° СЂРµР±РµСЂ РіСЂР°С„Р°
 	{
 		for (int j = i + 1; j < n; j++)
 		{
@@ -408,10 +408,10 @@ void Graph<T>::DrawGraph() // Полная отрисовка графа
 			}
 		}
 	}
-	drawVertex(n); // Отрисовка вершин графа
+	drawVertex(n); // РћС‚СЂРёСЃРѕРІРєР° РІРµСЂС€РёРЅ РіСЂР°С„Р°
 }
 
-void WindowsChange(int w, int h) // Окно
+void WindowsChange(int w, int h) // РћРєРЅРѕ
 {
 	WinW = w;
 	WinH = h;
@@ -422,7 +422,7 @@ void WindowsChange(int w, int h) // Окно
 	glutPostRedisplay();
 }
 
-void drawMenuText(string text, int x1, int y1) // Текст для кнопок на меню
+void drawMenuText(string text, int x1, int y1) // РўРµРєСЃС‚ РґР»СЏ РєРЅРѕРїРѕРє РЅР° РјРµРЅСЋ
 {
 	GLvoid* font = GLUT_BITMAP_HELVETICA_18;
 	string s = text;
@@ -431,11 +431,11 @@ void drawMenuText(string text, int x1, int y1) // Текст для кнопок на меню
 		glutBitmapCharacter(font, s[j]);
 }
 
-void drawMenu() // Отрисовка самого меню
+void drawMenu() // РћС‚СЂРёСЃРѕРІРєР° СЃР°РјРѕРіРѕ РјРµРЅСЋ
 {
 	int height = 800;
 
-	glColor3d(0.0, 0.0, 0.0); // Треугольники для увеличения вершин графа
+	glColor3d(0.0, 0.0, 0.0); // РўСЂРµСѓРіРѕР»СЊРЅРёРєРё РґР»СЏ СѓРІРµР»РёС‡РµРЅРёСЏ РІРµСЂС€РёРЅ РіСЂР°С„Р°
 	glBegin(GL_TRIANGLES);
 	glVertex2i(23, height - 79);
 	glVertex2i(187, height - 79);
@@ -450,7 +450,7 @@ void drawMenu() // Отрисовка самого меню
 	glColor3d(0.0, 0.0, 0.0);
 	drawMenuText("Insert New Vertex", 35, height - 15);
 
-	glColor3d(0.0, 0.0, 0.0); // Треугольники для уменьшения вершин графа
+	glColor3d(0.0, 0.0, 0.0); // РўСЂРµСѓРіРѕР»СЊРЅРёРєРё РґР»СЏ СѓРјРµРЅСЊС€РµРЅРёСЏ РІРµСЂС€РёРЅ РіСЂР°С„Р°
 	glBegin(GL_TRIANGLES);
 	glVertex2i(23, height - 86);
 	glVertex2i(187, height - 86);
@@ -465,7 +465,7 @@ void drawMenu() // Отрисовка самого меню
 	glColor3d(0.0, 0.0, 0.0);
 	drawMenuText("Delete Vertex", 50, height - 120);
 
-	glColor3d(0.2, 0.2, 0.2); // Прямоугольник для кнопки вывода таблицы смежности
+	glColor3d(0.2, 0.2, 0.2); // РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РґР»СЏ РєРЅРѕРїРєРё РІС‹РІРѕРґР° С‚Р°Р±Р»РёС†С‹ СЃРјРµР¶РЅРѕСЃС‚Рё
 	glBegin(GL_QUADS);
 	glVertex2i(110, height - 550);
 	glVertex2i(213, height - 550);
@@ -475,7 +475,7 @@ void drawMenu() // Отрисовка самого меню
 	glColor3d(0.8, 1.0, 0.9);
 	drawMenuText("Print Matrix", 110, height - 525);
 
-	glColor3d(0.2, 0.2, 0.2); // Прямоугольники для кнопки запуска Коммивояжера
+	glColor3d(0.2, 0.2, 0.2); // РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРё РґР»СЏ РєРЅРѕРїРєРё Р·Р°РїСѓСЃРєР° РљРѕРјРјРёРІРѕСЏР¶РµСЂР°
 	glBegin(GL_QUADS);
 	glVertex2i(40, height - 560);
 	glVertex2i(303, height - 560);
@@ -494,43 +494,43 @@ void drawMenu() // Отрисовка самого меню
 
 }
 
-void MouseAction(int del, int action, int x, int y) { // Функция для отслеживания нажатий для кнопок
+void MouseAction(int del, int action, int x, int y) { // Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ РЅР°Р¶Р°С‚РёР№ РґР»СЏ РєРЅРѕРїРѕРє
 	int shift = 50;
 	int height = 800;
 
 	if (action == GLUT_DOWN) {
 
-		if ((x > 40) && (x < 170) && y > 50 && y < 80) // Кнопка добавить вершину
+		if ((x > 40) && (x < 170) && y > 50 && y < 80) // РљРЅРѕРїРєР° РґРѕР±Р°РІРёС‚СЊ РІРµСЂС€РёРЅСѓ
 		{
 			int sourceVertex;
 			int targetVertex;
 			int edgeWeight;
-			cout << "Начальная вершина: "; cin >> sourceVertex; cout << endl;
-			cout << "Конечная вершина: "; cin >> targetVertex; cout << endl;
+			cout << "РќР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂС€РёРЅР°: "; cin >> sourceVertex; cout << endl;
+			cout << "РљРѕРЅРµС‡РЅР°СЏ РІРµСЂС€РёРЅР°: "; cin >> targetVertex; cout << endl;
 			if (sourceVertex > amountVerts || targetVertex > amountVerts) {
 				amountVerts++;
 				graph.InsertVertex(amountVerts);
 			}
 
-			cout << "Ну и вес ребра: "; cin >> edgeWeight; cout << endl;
+			cout << "РќСѓ Рё РІРµСЃ СЂРµР±СЂР°: "; cin >> edgeWeight; cout << endl;
 			graph.InsertEdge(sourceVertex, targetVertex, edgeWeight); // 
 		}
-		if ((x > 40) && (x < 170) && y > 90 && y < 160) // Кнопка убрать вершину
+		if ((x > 40) && (x < 170) && y > 90 && y < 160) // РљРЅРѕРїРєР° СѓР±СЂР°С‚СЊ РІРµСЂС€РёРЅСѓ
 		{
 			int sourceVertex;
-			cout << "Введите последнию вершину: "; cin >> sourceVertex; cout << endl;
+			cout << "Р’РІРµРґРёС‚Рµ РїРѕСЃР»РµРґРЅРёСЋ РІРµСЂС€РёРЅСѓ: "; cin >> sourceVertex; cout << endl;
 			if (sourceVertex == amountVerts)
 			{
 				amountVerts--;
 				graph.DeleteVertex();
 			}
-			else cout << "Это не последняя вершина" << endl;
+			else cout << "Р­С‚Рѕ РЅРµ РїРѕСЃР»РµРґРЅСЏСЏ РІРµСЂС€РёРЅР°" << endl;
 		}
-		if (x > 110 && x < 213 && y > 525 && y < 550) // Кнока вывода таблицы смежности
+		if (x > 110 && x < 213 && y > 525 && y < 550) // РљРЅРѕРєР° РІС‹РІРѕРґР° С‚Р°Р±Р»РёС†С‹ СЃРјРµР¶РЅРѕСЃС‚Рё
 		{
 			graph.Print();
 		}
-		if (x > 50 && x < 293 && y > 570 && y < 600) // Кнопка для запуска Коммивояжера
+		if (x > 50 && x < 293 && y > 570 && y < 600) // РљРЅРѕРїРєР° РґР»СЏ Р·Р°РїСѓСЃРєР° РљРѕРјРјРёРІРѕСЏР¶РµСЂР°
 		{
 			ZadachaKomi();
 		}
