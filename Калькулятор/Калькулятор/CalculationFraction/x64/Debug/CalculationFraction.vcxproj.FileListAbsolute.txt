@@ -1,0 +1,4 @@
+C:\Users\omoyo\source\repos\CalculationFraction\CalculationFraction\x64\Debug\CalculationFraction.vcxproj.AssemblyReference.cache
+C:\Users\omoyo\source\repos\CalculationFraction\CalculationFraction\x64\Debug\CalculationFraction.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\omoyo\source\repos\CalculationFraction\CalculationFraction\x64\Debug\CalculationFraction.MyForm.resources
+C:\Users\omoyo\source\repos\CalculationFraction\CalculationFraction\x64\Debug\CalculationFraction.vcxproj.GenerateResource.cache
