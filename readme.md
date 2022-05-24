@@ -1,8 +1,8 @@
 # Творческая работа
-YouTube - https://www.youtube.com/watch?v=jbT_Fj4HqG0
+***YouTube*** - https://www.youtube.com/watch?v=jbT_Fj4HqG0
 ## Калькулятор десятичных и обыкновенных дробей
 
- Для работы необходим WindowsForms, чтобы его установить использовался следующий план.
+Для работы необходим WindowsForms, чтобы его установить использовался следующий план.
 
 ![Первый шаг](https://github.com/FarWG/Algoritm_NeLab/blob/main/picture/WindowsForms1.png)
 ![Второй шаг](https://github.com/FarWG/Algoritm_NeLab/blob/main/picture/WindowsForms2.png)
